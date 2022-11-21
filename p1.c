@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int citire_nr_linii()
+int citire_nr_linii(int max_l)
 {
     int nr;
 
     printf("Introduceti numarul de linii al matricei: ");
     scanf("%d", &nr);
 
-    if (nr > 50)
+    while (nr > max_l)
     {
         printf("Ati introdus o valoare eronata!\n");
         printf("Introduceti din nou numarul de linii al matricei: ");
@@ -17,14 +17,14 @@ int citire_nr_linii()
     return nr;
 }
 
-int citire_nr_coloane()
+int citire_nr_coloane(int max_c)
 {
     int nr;
 
     printf("Introduceti numarul de coloane al matricei: ");
     scanf("%d", &nr);
 
-    if (nr > 50)
+    while (nr > max_c)
     {
         printf("Ati introdus o valoare eronata!\n");
         printf("Introduceti din nou numarul de coloane al matricei: ");
@@ -40,7 +40,7 @@ int citire_nr_elem_nenule(int m)
 {
     int k;
 
-    printf("Introduceti numarul de elemente nenule: ");
+    printf("Introduceti numarul de elemente nenule pe care le doriti: ");
     scanf("%d", &k);
 
     while (k > m || k < 0)
@@ -98,7 +98,6 @@ void afisare_linii(int a[50][50], int n, int m, int k)
                 printf("%3d", a[i][c]);
             printf("\n");
         }
-        printf("\n");
 
         elem_nenul = 0;
     }
@@ -107,9 +106,10 @@ void afisare_linii(int a[50][50], int n, int m, int k)
 int main()
 {
     int a[50][50], n, m, k;
+    int max_linii = 50, max_coloane = 50;
 
-    n = citire_nr_linii();
-    m = citire_nr_coloane();
+    n = citire_nr_linii(max_linii);
+    m = citire_nr_coloane(max_coloane);
     k = citire_nr_elem_nenule(m);
 
     citire_elemente(a, n, m);
