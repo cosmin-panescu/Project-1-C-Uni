@@ -53,8 +53,11 @@ float varianta_doWhile(int n)
 
     do
     {
-        produs *= (1 - 1 / pow(i, 2));
-        i++;
+        if (n != 1)
+        {
+            produs *= (1 - 1 / pow(i, 2));
+            i++;
+        }
     } while (i <= n);
 
     return produs;
